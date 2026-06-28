@@ -1,0 +1,74 @@
+<div class="flex justify-content-center align-items-center">
+    <p-card class="w-full sm:w-30rem p-4" styleClass="profile-card">
+        <div class="flex flex-column align-items-center text-center gap-2">
+
+            <div class="flex align-items-center justify-content-center border-circle bg-black font-bold"
+                style="width: 100px; height: 100px; font-size: 35px; border: 3px solid #ac9548b6; color: #ac9548b6; border-radius: 50%; box-shadow: 0 0 12px 4px #ac9548b6;">
+                {{ userData?.name?.substring(0, 2).toUpperCase() }}
+            </div>
+
+            <h4 class="mt-1 mb-1">{{ userData?.email }}</h4>
+
+            <div class="w-full mt-4 profile-text">
+                <p><strong>Name :</strong> {{ userData?.name }}</p>
+                <p><strong>Email :</strong> {{ userData?.email }}</p>
+                <p><strong>Phone :</strong> {{ userData?.mobileNo }}</p>
+                <p><strong>DOB :</strong> {{ userData?.dob | date:'longDate' }}</p>
+
+                <p>
+                    <strong>Aadhaar :</strong>
+                    <span *ngIf="userData?.aadhaarPhoto; else notUploaded">
+                        <span class="ml-2">
+                            <a href="javascript:void(0)" class="view-link"
+                                (click)="openPreview(userData.aadhaarPhoto, 'Aadhaar Card')">
+                                View
+                            </a>
+                        </span>
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Licence :</strong>
+                    <span *ngIf="userData?.licencePhoto; else notUploaded">
+                        <span class="ml-2">
+                            <a href="javascript:void(0)" class="view-link"
+                                (click)="openPreview(userData.licencePhoto, 'Driving Licence')">
+                                View
+                            </a>
+                        </span>
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Customer Photo :</strong>
+                    <span *ngIf="userData?.customerPhoto; else notUploaded">
+                        <span class="ml-2">
+                            <a href="javascript:void(0)" class="view-link"
+                                (click)="openPreview(userData.customerPhoto, 'Customer Photo')">
+                                View
+                            </a>
+                        </span>
+                    </span>
+                </p>
+                <ng-template #notUploaded>Not Uploaded</ng-template>
+            </div>
+
+            <div class="flex gap-3 mt-4">
+                <p-button label="Update Profile" styleClass="custom-button" (onClick)="Update()" [outlined]="true">
+                </p-button>
+                <p-button label="Delete Account" styleClass="custom-default" (onClick)="Delete(userData?.userId)"
+                    [outlined]="true">
+                </p-button>
+            </div>
+        </div>
+    </p-card>
+</div>
+
+<p-dialog [(visible)]="visible" [modal]="true" [style]="{width: '30vw'}" [header]="selectedImageName"
+    styleClass="profile-preview-dialog">
+    <img [src]="selectedImage" alt="Document" class="w-full" />
+</p-dialog>
+
+
+<p-confirmDialog></p-confirmDialog>
+<p-toast></p-toast>

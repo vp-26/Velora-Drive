@@ -1,0 +1,15 @@
+<div class="layout">
+  <app-header class="fixed-header"></app-header>
+
+  <div class="content-body">
+    <router-outlet></router-outlet>
+  </div>
+
+  <app-footer></app-footer>
+</div>
+
+<p-scrollTop target="window" styleClass="scroll-to-top" [threshold]="100" icon="pi pi-arrow-up" />
+
+<div *ngIf="isLoading" class="custom-loader-wrapper">
+  <p-progressSpinner ariaLabel="Loading..."></p-progressSpinner>
+</div>

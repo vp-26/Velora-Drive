@@ -1,0 +1,41 @@
+<!-- <div class="search-container">
+    <input type="text" pInputText placeholder="Search by Name, Mobile or Email..." [(ngModel)]="enquirySearch"
+        (input)="filterEnquiries()">
+    <i class="pi pi-search search-icon"></i>
+</div> -->
+
+<div class="toolbar-container">
+    <div class="toolbar-left">
+        <div class="p-inputgroup search-box custom-search">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-search"></i>
+            </span>
+            <input type="text" pInputText placeholder="Search by Name, Mobile or Email..." [(ngModel)]="enquirySearch"
+                (input)="filterEnquiries()">
+        </div>
+    </div>
+</div>
+
+<p-table [value]="filteredEnquiries" [paginator]="true" [rows]="10" [tableStyle]="{ 'min-width': '50rem' }"
+    styleClass="dark-table">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:16%">First Name</th>
+            <th style="width:16%">Last Name</th>
+            <th style="width:16%">Mobile No</th>
+            <th style="width:16%">Email Id</th>
+            <th style="width:16%">Message</th>
+            <th style="width:16%">Created On</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-enquiries>
+        <tr>
+            <td>{{ enquiries.firstName }}</td>
+            <td>{{ enquiries.lastName }}</td>
+            <td>{{ enquiries.mobileNo }}</td>
+            <td>{{ enquiries.email }}</td>
+            <td>{{ enquiries.message }}</td>
+            <td>{{ enquiries.createdAt | date:'dd MMM yyyy, hh:mm a' }}</td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -1,0 +1,267 @@
+<!-- <form [formGroup]="registerForm"
+  style="display: flex; justify-content: center; align-items: center; height: full; background-color: #000;">
+  
+  <p-card header="Register"
+    [style]="{ width: '400px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(172, 149, 72, 0.4)', border: 'none' }"
+    styleClass="p-p-4 bg-black text-white">
+
+    <div class="col-12 mb-3">
+      <label for="name" class="form-label" style="color: #ac9548b6;">Name</label>
+      <input type="text" pInputText formControlName="name"
+        class="w-full custom-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['name'].hasError('required') && (registerForm.get('name')?.touched || registerForm.controls['name'].dirty)">
+        Name is Required
+      </small>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label for="dob" class="form-label" style="color: #ac9548b6;">Date of Birth</label>
+      <input type="date" pInputText formControlName="dob"
+        class="w-full custom-input date-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['dob'].hasError('required') && registerForm.get('dob')?.touched">
+        Date of Birth is Required
+      </small>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label for="mobileNo" class="form-label" style="color: #ac9548b6;">Mobile Number</label>
+      <input type="text" pInputText formControlName="mobileNo" placeholder="00000-00000" mask="00000-00000"
+        class="w-full custom-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['mobileNo'].hasError('required') && (registerForm.get('mobileNo')?.touched || registerForm.controls['mobileNo'].dirty)">
+        Mobile No is Required
+      </small>
+      <small class="p-error text-xs" *ngIf="registerForm.controls['mobileNo'].hasError('pattern')">
+        Only numeric values allowed
+      </small>
+    </div>
+
+    <div class="col-12 mb-4">
+      <label for="licencePhoto" class="form-label" style="color: #ac9548b6;">Licence Photo</label>
+      <p-fileUpload mode="basic" name="licencePhoto" [auto]="false" accept="image/*"
+        [chooseLabel]="licenceChooseLabel" chooseIcon="pi pi-upload" class="file-upload-style"
+        maxFileSize="10000000" (onSelect)="onFileSelect($event, 'licencePhoto')">
+      </p-fileUpload>
+      <small class="p-error"
+        *ngIf="registerForm.get('licencePhoto')?.invalid && registerForm.get('licencePhoto')?.touched">
+        Licence photo is required
+      </small>
+    </div>
+
+    <div class="col-12 mb-4">
+      <label for="aadhaarPhoto" class="form-label" style="color: #ac9548b6;">Aadhar Card Photo</label>
+      <p-fileUpload mode="basic" name="aadhaarPhoto" [auto]="false" accept="image/*"
+        [chooseLabel]="aadharChooseLabel" chooseIcon="pi pi-upload" class="file-upload-style"
+        maxFileSize="10000000" (onSelect)="onFileSelect($event, 'aadhaarPhoto')">
+      </p-fileUpload>
+      <small class="p-error"
+        *ngIf="registerForm.get('aadhaarPhoto')?.invalid && registerForm.get('aadhaarPhoto')?.touched">
+        Aadhar card photo is required
+      </small>
+    </div>
+
+    <div class="col-12 mb-4">
+      <label for="customerPhoto" class="form-label" style="color: #ac9548b6;">Customer Photo</label>
+      <p-fileUpload mode="basic" name="customerPhoto" [auto]="false" accept="image/*"
+        [chooseLabel]="customerChooseLabel" chooseIcon="pi pi-upload" class="file-upload-style"
+        maxFileSize="10000000" (onSelect)="onFileSelect($event, 'customerPhoto')">
+      </p-fileUpload>
+      <small class="p-error"
+        *ngIf="registerForm.get('customerPhoto')?.invalid && registerForm.get('customerPhoto')?.touched">
+        Customer photo is required
+      </small>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label for="email" class="form-label" style="color: #ac9548b6;">Email</label>
+      <input type="email" pInputText formControlName="email"
+        class="w-full custom-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['email'].hasError('required') && (registerForm.get('email')?.touched || registerForm.controls['email'].dirty)">
+        Email is Required
+      </small>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label for="password" class="form-label" style="color: #ac9548b6;">Password</label>
+      <p-password id="password" formControlName="password" [toggleMask]="true"
+        [inputStyle]="{'background-color': 'transparent','color': 'white','border': 'none','border-bottom': '2px solid #ac9548b6','font-weight': '600'}"
+        [style]="{ 'width': '100%' }" class="w-full">
+      </p-password>
+      <small class="p-error text-xs"
+        *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)">
+        Password is required
+      </small>
+    </div>
+
+    <p-button [label]="isEditMode ? 'Update' : 'Submit'" [disabled]="registerForm.invalid"
+      (click)="isEditMode ? update() : submit()"
+      styleClass="w-full p-button-raised custom-button p-mt-3">
+    </p-button>
+
+    <div class="login-register-text mt-3 text-center">
+      Already a member? <a routerLink="/login" class="login-register-link">Login</a>
+    </div>
+
+  </p-card>
+</form> -->
+
+
+
+<form [formGroup]="registerForm"
+  style="display: flex; justify-content: center; align-items: center; height: full; background-color: #000;">
+
+  <p-card header="Register"
+    [style]="{ width: '400px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(172, 149, 72, 0.4)', border: 'none' }"
+    styleClass="p-p-4 bg-black text-white">
+
+    <!-- Name -->
+    <div class="col-12 mb-3">
+      <label for="name" class="form-label" style="color: #ac9548b6;">Name</label>
+      <input type="text" pInputText formControlName="name" class="w-full custom-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['name'].hasError('required') && (registerForm.get('name')?.touched || registerForm.controls['name'].dirty)">
+        Name is Required
+      </small>
+    </div>
+
+    <!-- DOB -->
+    <div class="col-12 mb-3">
+      <label for="dob" class="form-label" style="color: #ac9548b6;">Date of Birth</label>
+      <input type="date" pInputText formControlName="dob" class="w-full custom-input date-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['dob'].hasError('required') && registerForm.get('dob')?.touched">
+        Date of Birth is Required
+      </small>
+    </div>
+
+    <!-- Mobile -->
+    <div class="col-12 mb-3">
+      <label for="mobileNo" class="form-label" style="color: #ac9548b6;">Mobile Number</label>
+      <input type="text" pInputText formControlName="mobileNo" placeholder="00000-00000" mask="00000-00000"
+        class="w-full custom-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['mobileNo'].hasError('required') && (registerForm.get('mobileNo')?.touched || registerForm.controls['mobileNo'].dirty)">
+        Mobile No is Required
+      </small>
+      <small class="p-error text-xs" *ngIf="registerForm.controls['mobileNo'].hasError('pattern')">
+        Only numeric values allowed
+      </small>
+    </div>
+
+    <!-- Licence Photo -->
+    <div class="col-12 mb-4">
+      <label for="licencePhoto" class="form-label" style="color: #ac9548b6;">Licence Photo</label>
+      <p-fileUpload mode="basic" name="licencePhoto" [auto]="false" accept="image/*" [chooseLabel]="licenceChooseLabel"
+        chooseIcon="pi pi-upload" class="file-upload-style" maxFileSize="10000000"
+        (onSelect)="onFileSelect($event, 'licencePhoto')">
+      </p-fileUpload>
+      <small class="p-error"
+        *ngIf="registerForm.get('licencePhoto')?.invalid && registerForm.get('licencePhoto')?.touched">
+        Licence photo is required
+      </small>
+    </div>
+
+    <!-- Aadhar Photo -->
+    <div class="col-12 mb-4">
+      <label for="aadhaarPhoto" class="form-label" style="color: #ac9548b6;">Aadhar Card Photo</label>
+      <p-fileUpload mode="basic" name="aadhaarPhoto" [auto]="false" accept="image/*" [chooseLabel]="aadharChooseLabel"
+        chooseIcon="pi pi-upload" class="file-upload-style" maxFileSize="10000000"
+        (onSelect)="onFileSelect($event, 'aadhaarPhoto')">
+      </p-fileUpload>
+      <small class="p-error"
+        *ngIf="registerForm.get('aadhaarPhoto')?.invalid && registerForm.get('aadhaarPhoto')?.touched">
+        Aadhar card photo is required
+      </small>
+    </div>
+
+    <!-- Customer Photo -->
+    <div class="col-12 mb-4">
+      <label for="customerPhoto" class="form-label" style="color: #ac9548b6;">Customer Photo</label>
+      <p-fileUpload mode="basic" name="customerPhoto" [auto]="false" accept="image/*"
+        [chooseLabel]="customerChooseLabel" chooseIcon="pi pi-upload" class="file-upload-style" maxFileSize="10000000"
+        (onSelect)="onFileSelect($event, 'customerPhoto')">
+      </p-fileUpload>
+      <small class="p-error"
+        *ngIf="registerForm.get('customerPhoto')?.invalid && registerForm.get('customerPhoto')?.touched">
+        Customer photo is required
+      </small>
+    </div>
+
+    <!-- Email -->
+    <div class="col-12 mb-3">
+      <label for="email" class="form-label" style="color: #ac9548b6;">Email</label>
+      <input type="email" pInputText formControlName="email" class="w-full custom-input"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+      <small class="p-error text-xs"
+        *ngIf="registerForm.controls['email'].hasError('required') && (registerForm.get('email')?.touched || registerForm.controls['email'].dirty)">
+        Email is Required
+      </small>
+    </div>
+
+    <!-- Password -->
+    <div class="col-12 mb-3">
+      <label for="password" class="form-label" style="color: #ac9548b6;">Password</label>
+      <p-password id="password" formControlName="password" [toggleMask]="true"
+        [inputStyle]="{'background-color': 'transparent','color': 'white','border': 'none','border-bottom': '2px solid #ac9548b6','font-weight': '600'}"
+        [style]="{ 'width': '100%' }" class="w-full">
+      </p-password>
+      <small class="p-error text-xs"
+        *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)">
+        Password is required
+      </small>
+    </div>
+
+    <!-- Submit Button -->
+    <p-button [label]="isEditMode ? 'Update' : 'Submit'" [disabled]="registerForm.invalid"
+      (click)="isEditMode ? openOtpDialog()  : submit()" styleClass="w-full p-button-raised custom-button p-mt-3">
+    </p-button>
+
+    <div class="login-register-text mt-3 text-center">
+      Already a member? <a routerLink="/login" class="login-register-link">Login</a>
+    </div>
+
+  </p-card>
+</form>
+
+
+
+<p-dialog header="Verify OTP" [(visible)]="otpDialogVisible" [modal]="true" [style]="{width: '400px'}"
+  [closable]="false">
+
+  <div class="text-center mb-3">
+    <div class="font-bold text-xl mb-2">Authenticate Your Account</div>
+    <p class="text-color-secondary block mb-5">
+      Please enter the code sent to your email.
+    </p>
+  </div>
+
+  <div class="otp-wrapper">
+    <p-inputOtp [(ngModel)]="value" name="otp" [length]="6" style="gap: 10px">
+      <ng-template pTemplate="input" let-token let-events="events" let-index="index">
+        <input type="text" maxlength="1" pInputText (input)="events.input($event)"
+          (keydown)="events.keydown($event); allowNumbersOnly($event)" (paste)="events.paste($event)"
+          [attr.value]="token" class="otp-box" />
+        <div *ngIf="index === 3" class="px-3">
+          <i class="pi pi-minus"></i>
+        </div>
+      </ng-template>
+    </p-inputOtp>
+  </div>
+
+  <div class="flex justify-content-between mt-5">
+    <p-button label="Resend Code" [link]="true" styleClass="custom-default" (click)="resendOtp()" />
+    <p-button label="Submit Code" styleClass="custom-button" (click)="update()" />
+  </div>
+
+  <p class="mt-2 text-sm text-red-500">{{ message }}</p>
+</p-dialog>

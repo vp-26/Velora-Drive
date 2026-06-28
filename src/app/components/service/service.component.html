@@ -1,0 +1,204 @@
+<p-splitter layout="horizontal" [panelSizes]="panelSizes" [style]="{ height: '100vh' }" styleClass="custom-splitter">
+    <!-- Sidebar Panel -->
+    <ng-template pTemplate="panel1">
+        <aside class="split-panel sidebar p-5 bg-black text-white">
+            <p-card header="Our Services" styleClass="sidebar-card mb-6 shadow-md rounded-lg bg-gray-900 border-none">
+                <ul class="services-list text-sm space-y-3">
+                    <li *ngFor="let service of services" (click)="goToService(service)" tabindex="0" role="button"
+                        [attr.aria-label]="service.name"
+                        class="service-item group flex justify-between items-center hover:text-yellow-400 transition-colors duration-200 cursor-pointer">
+
+                        <span>{{ service.name }}</span>
+                        <span class="arrow text-yellow-400 group-hover:translate-x-1 transition-transform">↗</span>
+                    </li>
+                </ul>
+
+
+            </p-card>
+
+            <!-- Help Section -->
+            <p-card styleClass="sidebar-card bg-gray-900 border-none shadow-md rounded-lg">
+                <div class="help-section text-center">
+                    <i class="pi pi-question-circle text-6xl text-orange-500 mb-3" aria-hidden="true"></i>
+                    <h3 class="text-lg font-semibold mb-2">Need help?</h3>
+                    <p class="text-sm text-gray-400 mb-4 leading-relaxed max-w-xs mx-auto">
+                        We strive to provide exceptional support. Got questions? We’re here to assist you.
+                    </p>
+                    <p-button label="Contact Us" icon="pi pi-phone" styleClass="custom-button"
+                        routerLink="/layout/contactus"></p-button>
+                </div>
+            </p-card>
+        </aside>
+    </ng-template>
+
+    <!-- Main Content Panel -->
+    <ng-template pTemplate="panel2">
+        <main class="split-panel p-6 overflow-y-auto text-white" style="background-color: #111;">
+            <!-- Hero Image -->
+            <img src="assets/images/Car/service-page.png" alt="Airport Transfer Cars"
+                class="w-full max-h-[360px] object-cover rounded-b-2xl mb-6 shadow-lg" loading="lazy" />
+
+            <!-- Main Content -->
+            <section class="max-w-6xl mx-auto px-4 md:px-12 py-8">
+                <h2 class="text-4xl font-extrabold leading-tight mb-6">
+                    Discover premium airport <span class="text-yellow-400">transfer</span> service
+                </h2>
+                <p class="text-gray-400 text-base mb-10 leading-relaxed">
+                    Skip the wait and stress. Our airport transfer service offers a seamless, luxurious, and comfortable
+                    ride from the airport. Velora Drive is your trusted provider for luxury car rental in Dubai.
+                </p>
+
+                <!-- Features -->
+                <div class="grid md:grid-cols-2 gap-6 text-sm font-semibold mb-12">
+                    <ng-container
+                        *ngFor="let feature of ['FREE Delivery and Pickup', 'Insurance Included', 'Rent Now Pay When You Arrive', 'Lowest Rates', '24/7 Pickup & Return', 'Multiple Drop-Off Locations']">
+                        <div class="flex items-center gap-3">
+                            <i class="pi pi-check-circle text-yellow-400"></i> {{ feature }}
+                        </div>
+                    </ng-container>
+                </div>
+
+                <hr class="border-gray-700 mb-12" />
+            </section>
+
+            <div style="background-color: transparent; color: #fff; padding: 60px 20px;">
+                <div style="max-width: 1000px; margin: auto; text-align: center;">
+                    <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">Get Into Gear With A Few Simple
+                        Steps</h2>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 60px;">
+
+                        <div
+                            style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">1️⃣</div>
+                            <p style="color: #bbb;">
+                                Book Online, by Phone, or In Person</p>
+                        </div>
+
+                        <div
+                            style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">2️⃣</div>
+                            <p style="color: #bbb;">Pick Up Vehicle or Request Pickup</p>
+                        </div>
+
+                        <div
+                            style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">3️⃣</div>
+                            <p style="color: #bbb;">Enjoy Unlimited Driving Miles</p>
+                        </div>
+
+                        <div
+                            style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">4️⃣</div>
+                            <p style="color: #bbb;">Drop Off at Valid Location & Pay</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div style="max-width: 1000px; margin: auto; text-align: center;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 60px;"> -->
+            <div style="max-width: 1000px; margin: auto; text-align: center;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+                    <!-- <div
+                        style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Airport Parking and Dropoff</h3>
+                        <p style="color: #bbb;">Experience convenient and reliable car rental services at Malaysia’s
+                            airports. Our seamless parking and dropoff solutions ensure stress-free travel. Explore
+                            the country with comfort and flexibility, choosing from our diverse fleet. Your journey
+                            starts here.</p>
+                    </div>
+
+                    <!-- <div
+                        style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Wedding Cars</h3>
+                        <p style="color: #bbb;">Elevate your special day with our exquisite wedding car rental
+                            service in Malaysia. Make a grand entrance in style and luxury, creating memories that
+                            last a lifetime. Trust us to add a touch of elegance to your celebration.</p>
+                    </div>
+
+                    <!-- <div
+                        style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Easy Online Reservations</h3>
+                        <p style="color: #bbb;">Experience hassle-free travel planning with our easy online
+                            reservations for car rental service in Malaysia. Book your desired vehicle from the
+                            comfort of your home, and embark on your journey with confidence. Simplify your travel
+                            arrangements today.</p>
+                    </div>
+
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Business Trip</h3>
+                        <p style="color: #bbb;">Elevate your business trip in Malaysia with our tailored car rental
+                            service. Seamless reservations, premium vehicles, and personalized assistance ensure a
+                            smooth journey. Focus on your business objectives while we take care of your
+                            transportation needs.</p>
+                    </div>
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">We’ll Pick You Up</h3>
+                        <p style="color: #bbb;">Arrive stress-free with our “We’ll Pick You Up” car rental service
+                            in Malaysia. Whether at the airport or your location, our reliable team ensures a
+                            convenient start to your adventure. Experience top-notch comfort and timely pickups.
+                            Your journey begins with us.</p>
+                    </div>
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Unlimited Driving Miles</h3>
+                        <p style="color: #bbb;">Discover true freedom with our unlimited driving miles car rental
+                            service in Malaysia. Explore the country without limits, embracing every moment of your
+                            journey. No constraints, just open roads and endless possibilities. Unleash your
+                            wanderlust today.</p>
+                    </div>
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Drivers & Damage Insurance</h3>
+                        <p style="color: #bbb;">Travel with confidence through Malaysia with our comprehensive
+                            drivers and damage insurance package. Enjoy worry-free exploration, knowing you’re
+                            protected against unforeseen situations. Your safety and peace of mind are our
+                            priorities. Embrace the road ahead with assurance.</p>
+                    </div>
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">24/7 Pickup & Dropoff</h3>
+                        <p style="color: #bbb;">Experience ultimate flexibility with our 24/7 pickup and dropoff car
+                            rental service in Malaysia. Whether it’s dawn or dusk, your convenience matters. Embark
+                            on your journey anytime, anywhere. Your schedule, our commitment. Embrace
+                            round-the-clock freedom now.</p>
+                    </div>
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Pay When You Dropoff</h3>
+                        <p style="color: #bbb;">Simplify your travel budget with our “Pay When You Dropoff” car
+                            rental service in Malaysia. Enjoy your trip without upfront payments. Focus on
+                            exploring, and settle the bill conveniently when you return. Your convenience, our
+                            priority. Book now and pay later. </p>
+                    </div>
+                    <!-- <div style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;"> -->
+                    <div
+                        style="width: 48%; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                        <h3 style="margin-bottom: 10px;" class="text-yellow-400">Roadside Assistance</h3>
+                        <p style="color: #bbb;">Travel with peace of mind with our comprehensive car rental service
+                            in Malaysia, including roadside assistance. We’ve got you covered, from flat tires to
+                            unexpected hiccups. Your journey is our priority. Drive confidently knowing help is just
+                            a call away. Your safety, our commitment.</p>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </ng-template>
+</p-splitter>

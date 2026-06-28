@@ -1,0 +1,102 @@
+<!-- <div class="toolbar-container">
+    <div class="toolbar-left">
+        <div class="p-inputgroup search-box custom-search">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-search"></i>
+            </span>
+            <input type="text" pInputText placeholder="Search by Model, Brand or Type..." [(ngModel)]="modelSearch"
+                (input)="filterModels()">
+        </div>
+    </div>
+</div> -->
+
+<div class="toolbar-container">
+    <div class="toolbar-left">
+        <div class="p-inputgroup search-box custom-search">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-search"></i>
+            </span>
+            <input type="text" pInputText placeholder="Search by Model, Brand or Type..." [(ngModel)]="modelSearch"
+                (input)="filterModels()">
+        </div>
+    </div>
+
+    <div class="toolbar-right">
+        <p-button icon="pi pi-plus-circle" label="Add Models" (onClick)="showDialog()" styleClass="custom-default" />
+    </div>
+</div>
+
+<p-table [value]="filteredCarModels" [paginator]="true" [rows]="10" [tableStyle]="{ 'min-width': '50rem' }"
+    styleClass="dark-table">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:15%">Model Id</th>
+            <th style="width:15%">Model Name</th>
+            <th style="width:15%">Car Type Id</th>
+            <th style="width:15%">Car Type</th>
+            <th style="width:15%">Brand Id</th>
+            <th style="width:15%">Brand Name</th>
+            <th style="width:15%">Action</th>
+        </tr>
+    </ng-template>
+
+    <!-- Body -->
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td>{{ item.modelId }}</td>
+            <td>{{ item.modelName }}</td>
+            <td>{{ item.typeId }}</td>
+            <td>{{ item.typeName }}</td>
+            <td>{{ item.brandId }}</td>
+            <td>{{ item.brandName }}</td>
+            <td>
+                <p-button (click)="Delete(item.modelId)" icon="pi pi-trash" styleClass="custom-icon-black-button"
+                    appendTo="self" />
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="Add Car Model" [(visible)]="visible" [style]="{ width: '500px' }" [modal]="true" [closable]="true"
+    [closeOnEscape]="true" styleClass="dark-dialog">
+
+    <form [formGroup]="AddcarmodelsForm" class="p-fluid grid">
+
+        <div class="col-12 md:col-6">
+            <label for="brandId1" class="block mb-2 font-semibold">Car Brand</label>
+            <p-dropdown id="brandId1" formControlName="brandId" [options]="CarBrands" optionLabel="brandName"
+                optionValue="brandId" placeholder="Select Car Brand" class="w-full dark-input" appendTo="body">
+            </p-dropdown>
+            <small class="p-error"
+                *ngIf="AddcarmodelsForm.get('brandId')?.invalid && AddcarmodelsForm.get('brandId')?.touched">
+                Car Brand is required
+            </small>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <label for="typeId" class="block mb-2 font-semibold">Car Types</label>
+            <p-dropdown id="typeId" formControlName="typeId" [options]="CarTypes" optionLabel="name"
+                optionValue="typeId" placeholder="Select Car Type" class="w-full dark-input" appendTo="body">
+            </p-dropdown>
+            <small class="p-error"
+                *ngIf="AddcarmodelsForm.get('typeId')?.invalid && AddcarmodelsForm.get('typeId')?.touched">
+                Car Types is required
+            </small>
+        </div>
+
+        <div class="col-12">
+            <label for="modelName" class="block mb-2 font-semibold">Model Name</label>
+            <input id="modelName" type="text" pInputText formControlName="modelName" class="dark-input" />
+            <small class="p-error"
+                *ngIf="AddcarmodelsForm.get('modelName')?.invalid && (AddcarmodelsForm.get('modelName')?.touched || AddcarmodelsForm.get('modelName')?.dirty)">
+                Model Name is required
+            </small>
+        </div>
+
+        <div class="col-12 text-right mt-4">
+            <p-button label="Cancel" (onClick)="visible = false" styleClass="custom-default" />
+            <p-button label="Submit" (onClick)="Submit()" [disabled]="AddcarmodelsForm.invalid"
+                styleClass="custom-button-dark" />
+        </div>
+    </form>
+</p-dialog>

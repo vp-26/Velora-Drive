@@ -1,0 +1,176 @@
+<div class="flex justify-content-end mb-3 pr-3">
+    <p-button icon="pi pi-plus-circle" label="ADD CAR" (onClick)="showDialog()" styleClass="custom-default" />
+</div>
+
+<p-table [value]="filteredCarList" [paginator]="true" [rows]="10" responsiveLayout="scroll" styleClass="dark-table">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Car ID</th>
+            <th>Image</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Doors</th>
+            <th>Passengers</th>
+            <th>Transmission</th>
+            <th>Air Condition</th>
+            <th>Fuel Type</th>
+            <th>Sunroof</th>
+            <th>Registered On</th>
+            <th>Rental Pricing</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-car>
+        <tr>
+            <td>{{ car.carId }}</td>
+            <td>
+                <p-image [src]="car.image" alt="car" width="100" height="60" [preview]="true"></p-image>
+            </td>
+            <td>{{ getBrandName(car.brandId) }}</td>
+            <td>{{ getModelName(car.modelId) }}</td>
+            <td>{{ car.doors }}</td>
+            <td>{{ car.passengers }}</td>
+            <td>{{ car.transmission }}</td>
+            <td>{{ car.airCondition ? 'Yes' : 'No' }}</td>
+            <td>{{ car.petrolVehicle ? 'Petrol' : 'Diesel' }}</td>
+            <td>{{ car.sunroof ? 'Yes' : 'No' }}</td>
+            <td>{{ car.createdAt | date: 'mediumDate' }}</td>
+            <td>
+                <ul class="pl-2 m-0">
+                    <li *ngFor="let rp of car.rentalPricing">
+                        {{ rp.rentalPeriod }} - ₹{{ rp.rentalCost }}
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <span [ngClass]="car.isActive ? 'text-green-500' : 'text-red-500'">
+                    {{ car.isActive ? 'Active' : 'Inactive' }}
+                </span>
+            </td>
+            <td class="flex gap-2">
+                <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-text p-button-plain text-blue-500"
+                    (click)="Update(car.carId)">
+                </p-button>
+                <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-text p-button-plain text-red-500"
+                    (click)="Delete(car.carId)">
+                </p-button>
+            </td>
+
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="{{ isEditMode ? 'Edit Car' : 'Add Car' }}" [(visible)]="visible" [style]="{ width: '720px' }"
+    [modal]="false" [closable]="true" [closeOnEscape]="true" styleClass="dark-dialog">
+    <form [formGroup]="AddCarForm" class="p-fluid grid">
+
+        <div class="col-12 md:col-6">
+            <label for="brandId" class="block mb-2 font-semibold">Car Brand</label>
+            <p-dropdown id="brandId" formControlName="brandId" [options]="CarBrands" optionLabel="brandName"
+                optionValue="brandId" placeholder="Select Car Brand" class="w-full dark-input"
+                (onChange)="onBrandChange($event)">
+            </p-dropdown>
+            <small class="p-error" *ngIf="AddCarForm.get('brandId')?.invalid && AddCarForm.get('brandId')?.touched">
+                Car Brand is required
+            </small>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <label for="modelId" class="block mb-2 font-semibold">Car Name</label>
+            <p-dropdown id="modelId" formControlName="modelId" [options]="CarModels" optionLabel="name"
+                optionValue="modelId" placeholder="Select Car Name" class="w-full dark-input">
+            </p-dropdown>
+            <small class="p-error" *ngIf="AddCarForm.get('modelId')?.invalid && AddCarForm.get('modelId')?.touched">
+                Car Name is required
+            </small>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <label for="image" class="block mb-2 font-semibold">Car Image</label>
+
+            <div class="flex align-items-center gap-2">
+                <p-fileUpload #fileUpload mode="basic" name="image" [auto]="false" accept="image/*"
+                    [chooseLabel]="chooseLabel" chooseIcon="pi pi-upload" class="dark-upload" maxFileSize="10000000"
+                    (onSelect)="FileUpload($event)">
+                </p-fileUpload>
+
+                <button pButton type="button" icon="pi pi-times" class="p-button-danger p-button-sm"
+                    (click)="cancelImage(fileUpload)">
+                </button>
+            </div>
+
+            <small class="p-error block mt-2"
+                *ngIf="AddCarForm.get('image')?.invalid && AddCarForm.get('image')?.touched">
+                Car image is required
+            </small>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <label for="doors" class="block mb-2 font-semibold">Doors</label>
+            <input id="doors" type="number" pInputText formControlName="doors" class="dark-input" />
+        </div>
+
+        <div class="col-12 md:col-6">
+            <label for="passengers" class="block mb-2 font-semibold">Passengers</label>
+            <input id="passengers" type="number" pInputText formControlName="passengers" class="dark-input" />
+        </div>
+
+        <div class="col-12 md:col-6">
+            <label for="transmission" class="block mb-2 font-semibold">Transmission</label>
+            <p-dropdown id="transmission" [options]="transmissionTypes" formControlName="transmission"
+                placeholder="Select Transmission" class="w-full dark-input">
+            </p-dropdown>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-checkbox formControlName="airCondition" binary="true" label="Air Condition"
+                class="dark-check"></p-checkbox>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-checkbox formControlName="petrolVehicle" binary="true" label="Petrol Vehicle"
+                class="dark-check"></p-checkbox>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-checkbox formControlName="sunroof" binary="true" label="Sunroof" class="dark-check"></p-checkbox>
+        </div>
+
+        <div class="col-12 md:col-6">
+            <p-checkbox formControlName="insurance" binary="true" label="Has Insurance?"
+                class="dark-check"></p-checkbox>
+        </div>
+
+        <div class="col-12 md:col-6 mt-3">
+            <label for="isActive" class="block mb-2 font-semibold">Car Status</label>
+            <div class="flex align-items-center gap-4">
+                <p-inputSwitch formControlName="isActive"></p-inputSwitch>
+                <span class="font-medium text-gray-700">
+                    {{ AddCarForm.get('isActive')?.value ? 'Show to Users : Active' : 'Show to Users : Inactive' }}
+                </span>
+            </div>
+        </div>
+
+
+        <div class="col-12 mt-3">
+            <h4 class="m-0 mb-2 text-lg font-bold">Rental Pricing</h4>
+            <div formArrayName="rentalPricing">
+                <div *ngFor="let pricing of rentalPricing?.controls; let i = index" [formGroupName]="i"
+                    class="flex gap-2 align-items-center mb-2">
+                    <input type="text" pInputText formControlName="rentalPeriod" placeholder="Day-basis"
+                        class="dark-input" readonly />
+                    <input type="number" pInputText formControlName="rentalCost" placeholder="Rental Cost (₹)"
+                        class="dark-input" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-right mt-4">
+            <p-button [label]="submitButtonLabel" styleClass="custom-button-dark" [disabled]="AddCarForm.invalid"
+                (onClick)="ADDCAR()">
+            </p-button>
+        </div>
+    </form>
+</p-dialog>

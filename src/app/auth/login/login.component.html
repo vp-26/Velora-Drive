@@ -1,0 +1,83 @@
+<form [formGroup]="loginForm"
+  style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000;">
+  <p-card header="Login"
+    [style]="{ width: '400px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(172, 149, 72, 0.4)', boder :'none' }"
+    styleClass="p-p-4 bg-black text-white">
+
+    <div class="col-12 mb-3">
+      <p-floatLabel>
+        <input type="email" pInputText formControlName="email" class="w-full custom-input"
+          style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+        <label for="email" style="color: #ac9548b6; font-weight: 600;">Email</label>
+      </p-floatLabel>
+      <span
+        *ngIf="loginForm.controls['email'].hasError('required') && (loginForm.get('email')?.touched || loginForm.controls['email'].dirty)"
+        class="block p-error text-xs">
+        Email is Required
+      </span>
+    </div>
+
+    <div class="col-12 mb-3">
+      <p-floatLabel>
+        <p-password id="password" formControlName="password" [toggleMask]="true"
+          [inputStyle]="{'background-color': 'transparent','color': 'white','border': 'none','border-bottom': '2px solid #ac9548b6','font-weight': '600' }"
+          [style]="{ 'width': '100%' }" class="w-full">
+        </p-password>
+        <label for="password" style="color: #ac9548b6; font-weight: 600;">
+          Password
+        </label>
+      </p-floatLabel>
+      <small class="p-error text-xs"
+        *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
+        Password is required
+      </small>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label style="color: #ac9548b6; font-weight: 600; margin-bottom: 0.5rem; display: block;">
+        Enter Captcha:
+      </label>
+      <!-- <canvas #captchaCanvas width="200" height="60" class="captcha-canvas"></canvas>
+      <button type="button" (click)="generateCaptcha()"
+        style="margin-top: 5px; color: #ac9548b6; background: transparent; border: none; cursor: pointer;">
+        Refresh Captcha ↻
+      </button> -->
+      <div class="captcha-container" style="display: flex; align-items: center; gap: 10px;">
+        <!-- Captcha Canvas -->
+        <canvas #captchaCanvas width="150" height="40" class="captcha-canvas"
+          style="border: 1px solid #ac9548b6; background-color: #fff;"></canvas>
+
+        <!-- Refresh Button -->
+        <button type="button" (click)="generateCaptcha()"
+          style="color: #ac9548b6; background: transparent; border: none; cursor: pointer; font-size: 25px;">
+          ↻
+        </button>
+      </div>
+      <!-- <input type="text" pInputText formControlName="captchaInput" class="w-full custom-input"
+        placeholder="Enter Captcha" [(ngModel)]="captchaInput"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" /> -->
+      <input type="text" pInputText formControlName="captchaInput" class="w-full custom-input"
+        placeholder="Enter Captcha"  [(ngModel)]="captchaInput"
+        style="background-color: transparent; color: white; border: none; border-bottom: 2px solid #ac9548b6; font-weight: 600;" />
+
+      <small class="p-error text-xs" *ngIf="captchaError">
+        Captcha does not match. Try again.
+      </small>
+    </div>
+
+    <div class="mb-3 text-right">
+      <a routerLink="/forgotpassword" class="forgot-password-link"
+        style="color: #ac9548b6; font-weight: 600; text-decoration: none; cursor: pointer;">
+        Forgot Password ?
+      </a>
+    </div>
+
+    <p-button label="Login" styleClass="custom-button w-full" [disabled]="loginForm.invalid"
+      (click)="login(loginForm.value)">
+    </p-button>
+
+    <div class="login-register-text">
+      Not a member...? <a routerLink="/register" class="login-register-link">Register</a>
+    </div>
+  </p-card>
+</form>

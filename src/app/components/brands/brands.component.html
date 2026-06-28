@@ -1,0 +1,81 @@
+<!-- <div class="search-container">
+    <input type="text" pInputText placeholder="Search by Brand Name or ID..." [(ngModel)]="brandSearch"
+        (input)="filterBrands()">
+    <i class="pi pi-search search-icon"></i>
+</div> -->
+
+<!-- <div class="toolbar-container">
+    <div class="toolbar-left">
+        <div class="p-inputgroup search-box custom-search">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-search"></i>
+            </span>
+            <input type="text" pInputText placeholder="Search by Brand Name or ID..." [(ngModel)]="brandSearch"
+                (input)="filterBrands()">
+        </div>
+    </div>
+</div>
+<ng-template pTemplate="caption">
+    <div class="table-caption-bar">
+        <p-button icon="pi pi-plus-circle" label="Add Brands" (onClick)="showDialog()" styleClass="custom-default" />
+    </div>
+</ng-template> -->
+
+<div class="toolbar-container">
+    <div class="toolbar-left">
+        <div class="p-inputgroup search-box custom-search">
+            <span class="p-inputgroup-addon">
+                <i class="pi pi-search"></i>
+            </span>
+            <input type="text" pInputText placeholder="Search by Brand Name or ID..." [(ngModel)]="brandSearch"
+                (input)="filterBrands()">
+        </div>
+    </div>
+
+    <div class="toolbar-right">
+        <p-button icon="pi pi-plus-circle" label="Add Brands" (onClick)="showDialog()" styleClass="custom-default" />
+    </div>
+</div>
+
+<p-table [value]="filteredBrands" [paginator]="true" [rows]="10" [tableStyle]="{ 'min-width': '50rem' }"
+    styleClass="dark-table">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width:25%">Brand Id</th>
+            <th style="width:25%">Brand Name</th>
+            <th style="width:25%">Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item>
+        <tr>
+            <td>{{ item.brandId }}</td>
+            <td>{{ item.brandName }}</td>
+            <td>
+                <p-button (click)="Delete(item.brandId)" icon="pi pi-trash" styleClass="custom-icon-black-button"
+                    appendTo="self" />
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog header="Create Product" [(visible)]="visible" [style]="{ width: '500px' }" [modal]="true" [closable]="true"
+    [closeOnEscape]="true" styleClass="dark-dialog">
+
+    <form [formGroup]="AddbrandForm" class="p-fluid grid">
+
+        <div class="col-12">
+            <label for="brandName" class="block mb-2 font-semibold">Brand Name</label>
+            <input id="brandName" type="text" pInputText formControlName="brandName" class="dark-input" />
+            <small class="p-error"
+                *ngIf="AddbrandForm.get('brandName')?.invalid && (AddbrandForm.get('brandName')?.touched || AddbrandForm.get('brandName')?.dirty)">
+                Brand Name is required
+            </small>
+        </div>
+
+        <div class="col-12 text-right mt-4">
+            <p-button label="Cancel" (onClick)="visible = false" styleClass="custom-default" />
+            <p-button label="Submit" (onClick)="Submit()" [disabled]="AddbrandForm.invalid"
+                styleClass="custom-button-dark" />
+        </div>
+    </form>
+</p-dialog>

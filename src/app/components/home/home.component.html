@@ -1,0 +1,316 @@
+<div class="video-wrapper">
+    <video src="assets/Video/lambo.mp4" muted autoplay loop playsinline class="video-background"></video>
+
+    <div class="content-over-video">
+        <h1>Shine on the Roads <br>Like Diamonds.</h1>
+        <h6>Velora Drive</h6>
+        <div style="margin-top: 30px;">
+            <p-button label="BOOK NOW" styleClass="custom-button" (click)="book()"></p-button>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div style="background-color: transparent; color: #fff; padding: 60px 20px; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">Book Your Favorite Car Today!</h2>
+
+        <p-carousel [value]="carList" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions"
+            [showIndicators]="false" autoplayInterval="2000" [showNavigators]="false">
+            <ng-template let-item pTemplate="item">
+                <div class="carousel-card-wrapper">
+                    <div class="home-car-card">
+                        <img [src]="item.image" alt="{{ item.name }}" class="home-car-image" />
+                        <div class="container">
+                            <div class="brand-badge">
+                                {{ getBrandName(item.brandId) }} Cars
+                            </div>
+                            <h3 class="car-model">
+                                {{ getModelName(item.modelId) }}
+                            </h3>
+
+                            <div class="card-footer flex justify-content-between align-items-center">
+                                <div class="price" *ngFor="let price of item.rentalPricing">
+                                    <span class="price-amount">
+                                        ₹ {{ price.rentalCost }} <small>/Per Day</small>
+                                    </span>
+                                </div>
+
+                                <p-button icon="pi pi-arrow-right" styleClass="arrow-button"
+                                    (onClick)="View(item.carId)">
+                                </p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <div style="background-color: transparent; color: #fff; padding: 60px 20px;">
+        <div style="max-width: 1200px; margin: auto;">
+            <h2 style="text-align: center; font-size: 2rem; font-weight: bold; margin-bottom: 40px;">
+                Explore Our Premium Fleet
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+
+                <div
+                    style="background: transparent; padding: 20px; border-radius: 12px; text-align: center; border: 3px solid #ac9548b6;">
+                    <img src="assets/images/Car/5 Series.jpg" alt="Luxury Sedan"
+                        style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.2rem; font-weight: bold;">BMW 5 Series</h3>
+                    <p style="color: #bbb;">Smooth. Classy. Powerful. A sedan built for those who want it all.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px; border-radius: 12px; text-align: center; border: 3px solid #ac9548b6;">
+                    <img src="assets/images/Car/Q7.jpeg" alt="Audi SUV"
+                        style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.2rem; font-weight: bold;">Audi Q7</h3>
+                    <p style="color: #bbb;">Bold performance meets luxury in this stunning SUV. Perfect for families and
+                        road trips.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px; border-radius: 12px; text-align: center; border: 3px solid #ac9548b6;">
+                    <img src="assets/images/Car/C-Class.jpg" alt="Convertible"
+                        style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.2rem; font-weight: bold;">Mercedes C-Class Cabriolet</h3>
+                    <p style="color: #bbb;">Feel the wind and make a statement. The perfect weekend cruiser.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: transparent; color: #fff; padding: 60px 20px;">
+        <div style="max-width: 1200px; margin: auto; text-align: center;">
+            <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 30px;">Trusted by Industry Leaders</h2>
+            <p style="color: #aaa; margin-bottom: 40px;">We collaborate with top brands to ensure premium service and
+                trust.
+            </p>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 130px;">
+                <img src="https://www.diamondrent.sk/wp-content/uploads/2025/01/audi-e1738177075934.png" alt="BMW"
+                    style="height: 60px; opacity: 0.8;">
+                <img src="https://www.diamondrent.sk/wp-content/uploads/2025/01/256px-BMW_logo_white.svg.png" alt="Audi"
+                    style="height: 60px; opacity: 0.8;">
+                <img src="https://www.diamondrent.sk/wp-content/uploads/2025/01/mb-150x150.png" alt="Mercedes"
+                    style="height: 60px; opacity: 0.8;">
+                <img src="https://www.diamondrent.sk/wp-content/uploads/2025/01/maserati-300x130.webp" alt="Maserati"
+                    style="height: 60px; opacity: 0.8;">
+                <img src="https://www.diamondrent.sk/wp-content/uploads/2025/01/dodge-w-1-150x150.png" alt="Kia"
+                    style="height: 60px; opacity: 0.8;">
+                <img src="https://www.diamondrent.sk/wp-content/uploads/2025/01/porsche-150x150.png" alt="Kia"
+                    style="height: 60px; opacity: 0.8;">
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: transparent; color: #fff; padding: 60px 20px;">
+        <div style="max-width: 1000px; margin: auto; text-align: center;">
+            <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">How Renting Works</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 60px;">
+
+                <div
+                    style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">1️⃣</div>
+                    <h3 style="margin-bottom: 10px;">Choose Your Car</h3>
+                    <p style="color: #bbb;">Browse our premium fleet and pick the perfect ride for you.</p>
+                </div>
+
+                <div
+                    style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">2️⃣</div>
+                    <h3 style="margin-bottom: 10px;">Set Dates & Location</h3>
+                    <p style="color: #bbb;">Select your pickup and return dates and preferred location.</p>
+                </div>
+
+                <div
+                    style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">3️⃣</div>
+                    <h3 style="margin-bottom: 10px;">Confirm Booking</h3>
+                    <p style="color: #bbb;">Review details and confirm your booking with easy checkout.</p>
+                </div>
+
+                <div
+                    style="flex: 1; min-width: 200px; background: transparent; padding: 20px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">4️⃣</div>
+                    <h3 style="margin-bottom: 10px;">Enjoy the Drive</h3>
+                    <p style="color: #bbb;">Pickup your car and experience premium luxury on the road.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: transparent; color: #eee; padding: 60px 20px; font-family: Arial, sans-serif;">
+        <div style="max-width: 1200px; margin: auto; text-align: center;">
+            <h2 style="font-size: 2.4rem; font-weight: 700; margin-bottom: 40px;">Why Our Cars Stand Out</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;">
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-cog" style="font-size: 2rem; color: #00bfff; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Advanced Technology</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">State-of-the-art systems for smooth
+                        driving & connectivity.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-shield" style="font-size: 2rem; color: #ffcc00; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Safety First</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Top-tier safety features to protect
+                        you on every journey.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-lock" style="font-size: 2rem; color: #3b82f6; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Secure Payment</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Encrypted and trusted payment options.
+                    </p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-check-circle" style="font-size: 2rem; color: #facc15; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Verified Vehicles</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Every vehicle is quality-checked and
+                        verified.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-car" style="font-size: 2rem; color: #3cb371; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Eco-Friendly Models</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Hybrid and electric options for a
+                        greener drive.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="fa-solid fa-infinity" style="font-size: 2rem; color: #ff6f61; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">24/7 Support</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Round-the-clock customer service for
+                        peace of mind.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-map-marker" style="font-size: 2rem; color: #6366f1; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Choose Location</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Pick your pickup and drop location
+                        easily.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-calendar" style="font-size: 2rem; color: #f97316; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Select Dates</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Choose flexible rental dates that fit
+                        your schedule.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-key" style="font-size: 2rem; color: #14b8a6; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Drive Away</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Pick your car and enjoy a premium
+                        experience.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-shield" style="font-size: 2rem; color: #4caf50; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">100% Safety Guaranteed</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">All our cars undergo rigorous safety
+                        checks before each rental.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-thumbs-up" style="font-size: 2rem; color: #2196f3; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Trusted by Thousands</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Over 5000 happy customers and
+                        counting.</p>
+                </div>
+
+                <div
+                    style="background: transparent; padding: 20px 15px; border-radius: 15px; cursor: default; border: 3px solid #ac9548b6;">
+                    <i class="pi pi-wallet" style="font-size: 2rem; color: #ff9800; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Affordable Pricing</h3>
+                    <p style="color: #bbb; font-size: 0.95rem; line-height: 1.3;">Competitive rates without compromising
+                        quality.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: transparent; color: #fff; padding: 60px 20px; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">Special Offers & Discounts</h2>
+        <div
+            style="max-width: 900px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 30px;">
+            <div style="background: transparent; padding: 25px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                <i class="pi pi-percent" style="font-size: 3rem; color: #00bfff; margin-bottom: 15px;"></i>
+                <h3>10% Off First Rental</h3>
+                <p style="color: #bbb;">Enjoy a special 10% discount on your very first booking with us.</p>
+            </div>
+
+            <div style="background: transparent; padding: 25px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                <i class="pi pi-calendar-plus" style="font-size: 3rem; color: #ffcc00; margin-bottom: 15px;"></i>
+                <h3>Weekly Rental Savings</h3>
+                <p style="color: #bbb;">Book for a week or more and save up to 15% on the total price.</p>
+            </div>
+
+            <div style="background: transparent; padding: 25px; border-radius: 12px; border: 3px solid #ac9548b6;">
+                <i class="pi pi-gift" style="font-size: 3rem; color: #3cb371; margin-bottom: 15px;"></i>
+                <h3>Refer & Earn</h3>
+                <p style="color: #bbb;">Invite friends and earn credits towards your next rental.</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: transparent; color: #eee; padding: 60px 20px; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">Our Fleet Highlights</h2>
+
+        <div
+            style="max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 30px;">
+            <div
+                style="position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; border: 3px solid #ac9548b6;">
+                <img src="assets/images/Car/S-Class.jpg" alt="Luxury Car 1"
+                    style="width: 100%; height: auto; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 20px;">
+                    <h3 style="margin: 0;">Mercedes-Benz S-Class</h3>
+                    <p style="margin: 5px 0 0;">Luxury & Performance Combined</p>
+                </div>
+            </div>
+
+            <div
+                style="position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; border: 3px solid #ac9548b6;">
+                <img src="assets/images/Car/Porsche 911.jpg" alt="Sports Car"
+                    style="width: 100%; height: auto; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 20px;">
+                    <h3 style="margin: 0;">Porsche 911</h3>
+                    <p style="margin: 5px 0 0;">Speed & Style</p>
+                </div>
+            </div>
+
+            <div
+                style="position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; border: 3px solid #ac9548b6;">
+                <img src="assets/images/Car/Model S.jpeg" alt="Electric Car"
+                    style="width: 100%; height: auto; display: block;">
+                <div
+                    style="position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; padding: 20px;">
+                    <h3 style="margin: 0;">Tesla Model S</h3>
+                    <p style="margin: 5px 0 0;">Eco-Friendly Luxury</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

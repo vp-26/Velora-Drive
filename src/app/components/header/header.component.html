@@ -1,0 +1,32 @@
+<p-menubar [model]="loggedUserMenuList" styleClass="custom-menubar">
+  <ng-template pTemplate="start">
+    <div class="menu-logo">
+      <a routerLink="/layout" class="logo-link">
+        <img src="assets/images/logo1.png" alt="Luxury Car Logo" class="logo-img" />
+      </a>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="item" let-item>
+    <a pRipple class="p-menuitem-link custom-menu-item" [routerLink]="item.routerLink" routerLinkActive="active">
+      {{ item.label }}
+    </a>
+  </ng-template>
+
+
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2 p-2 rounded" style="background-color: #131313 ;">
+      <!-- <input *ngIf="!isAdmin" type="text" pInputText placeholder="Search" class="w-8rem sm:w-auto"
+        style="background-color: #2c2c2c; color: #fff;border: 1px solid #ac9548b6;" /> -->
+
+      <p-avatar label="{{ userData?.name?.substring(0, 1).toUpperCase() }}" shape="circle" styleClass="avatar"
+        class="font-bold" (click)="menu.toggle($event)">
+      </p-avatar>
+    </div>
+  </ng-template>
+
+</p-menubar>
+
+<p-menu #menu [model]="option" [popup]="true" appendTo="body"></p-menu>
+<p-toast />
+<p-confirmDialog />

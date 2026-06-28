@@ -1,0 +1,81 @@
+<p-card header="Performance Overview" class="m-3" styleClass="dark-card">
+
+  <div class="grid mb-4 text-center">
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">{{ totalUsers }}</h2>
+        <p class="m-0">Total Users</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">{{ totalCars }}</h2>
+        <p class="m-0">Total Cars</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">{{ totalCarBrands }}</h2>
+        <p class="m-0">Total Car Brands</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid mb-4 text-center">
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">{{ todayBookings }}</h2>
+        <p class="m-0">Today's Bookings</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">{{ yesterdayBookings }}</h2>
+        <p class="m-0">Yesterday's Bookings</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">{{ totalBooking }}</h2>
+        <p class="m-0">TotalBookings</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid mb-4 text-center">
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+         <h2 class="m-0">₹{{ todayProfit | number }}</h2>
+        <p class="m-0">Today's Profit</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">₹{{ yesterdayProfit | number }}</h2>
+        <p class="m-0">Yesterday's Profit</p>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-4">
+      <div pRipple class="stat-box"
+        style="background:black; padding:1.5rem; border-radius:12px; color:#fff; cursor:pointer;">
+        <h2 class="m-0">₹{{ totalProfit | number }}</h2>
+        <p class="m-0">Total Profit</p>
+      </div>
+    </div>
+    
+  </div>
+</p-card>

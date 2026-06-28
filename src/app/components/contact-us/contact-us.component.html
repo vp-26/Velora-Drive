@@ -1,0 +1,139 @@
+<h2 class="section-title">Contact Us</h2>
+
+<div class="main-contact-section">
+    <div class="contact-wrapper">
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h2 class="heading">Contact Information</h2>
+                <p class="subtext">Say something to start a live chat !</p>
+
+                <div class="info-group">
+                    <div class="info-row">
+                        <i class="pi pi-phone"></i>
+                        <span>(+91) 99999 99999</span>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="pi pi-envelope"></i>
+                        <span>{{'veloradrive83@gmail.com'}}</span>
+                    </div>
+
+                    <div class="info-row">
+                        <i class="pi pi-map-marker"></i>
+                        <span>
+                            5Q48+MWQ, Surat - Dumas Rd, <br>
+                            Opp Govardhan-Haveli,<br />
+                            Vesu, Surat, Gujarat. 395007
+                        </span>
+                    </div>
+                </div>
+
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/_vp_26_" target="_blank"
+                        style="text-decoration: none; color: inherit;">
+                        <i class="pi pi-instagram"></i>
+                    </a>
+                    <a href="https://twitter.com/your_username" target="_blank"
+                        style="text-decoration: none; color: inherit;">
+                        <i class="pi pi-twitter"></i>
+                    </a>
+                    <a href="https://wa.me/917285838909" target="_blank" style="text-decoration: none; color: inherit;">
+                        <i class="pi pi-whatsapp"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- <div class="contact-form">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" pInputText type="text" placeholder="Enter your first name" />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" pInputText type="text" placeholder="Enter your last name" />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" pInputText placeholder="Enter your email address" />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="phone">Phone</label>
+                        <input id="phone" pInputText type="text" placeholder="00000-00000" mask="00000-00000" />
+                    </div>
+
+                    <div class="form-field full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" pInputTextarea rows="5" placeholder="Write your message"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <p-button label="Send Message" styleClass="custom-button" />
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="contact-form">
+                <form [formGroup]="contactForm" class="form-grid">
+
+                    <div class="form-field">
+                        <label for="firstName">First Name</label>
+                        <input id="firstName" pInputText type="text" formControlName="firstName"
+                            placeholder="Enter your first name" />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="lastName">Last Name</label>
+                        <input id="lastName" pInputText type="text" formControlName="lastName"
+                            placeholder="Enter your last name" />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" pInputText formControlName="email"
+                            placeholder="Enter your email address" />
+                    </div>
+
+                    <div class="form-field">
+                        <label for="mobileNo">Phone</label>
+                        <input id="mobileNo" pInputText type="text" formControlName="mobileNo" placeholder="00000-00000"
+                            mask="00000-00000" />
+                    </div>
+
+                    <div class="form-field full-width">
+                        <label for="message">Message</label>
+                        <textarea id="message" pInputTextarea rows="5" formControlName="message"
+                            placeholder="Write your message"></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <p-button type="submit" label="Send Message" styleClass="custom-button"
+                            (onClick)="onSubmit()"></p-button>
+                    </div>
+
+                </form>
+
+                <p class="text-red-500 mt-2">{{ message }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="section-title-location">
+    <img src="assets/images/wheel.png" alt="Location Icon" class="location-icon" />
+    Location
+</h4>
+<h2 class="section-title">How to reach our location</h2>
+
+
+<div class="map-wrapper">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4000.5412451744464!2d72.83514837556285!3d21.206790080487433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f33b94e7f01%3A0x28fa65ddbdacc7e!2sRexona!5e1!3m2!1sen!2sin!4v1768148644019!5m2!1sen!2sin"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>

@@ -1,0 +1,101 @@
+<p-splitter layout="horizontal" [panelSizes]="[15, 85]" [style]="{ height: '100vh'}" styleClass="custom-splitter">
+
+    <!-- <ng-template pTemplate>
+        <div class="brand-column-container">
+            <div class="brand-item" *ngFor="let brand of CarBrands" (click)="selectBrand(brand.brandId)"
+                [ngClass]="{ 'active-brand': brand.brandId === selectedBrand }">
+                <h3 class="car-title">{{ brand.brandName }}</h3>
+            </div>
+        </div>
+
+    </ng-template> -->
+
+    <ng-template pTemplate>
+        <div class="brand-column-container">
+            <div class="brand-search">
+                <input type="text" pInputText placeholder="Search Brand..." [(ngModel)]="brandSearch"
+                    (input)="filterBrands()" class="brand-search-input" />
+                <i class="pi pi-search search-icon"></i>
+            </div>
+            <div class="brand-item" *ngFor="let brand of filteredBrands" (click)="selectBrand(brand.brandId)"
+                [ngClass]="{ 'active-brand': brand.brandId === selectedBrand }">
+                <h3 class="car-title">{{ brand.brandName }}</h3>
+            </div>
+        </div>
+    </ng-template>
+
+
+    <ng-template pTemplate>
+        <div class="split-panel flex align-items-start" style="overflow-y: auto; width: 100%;">
+            <div class="grid p-3" style="width: 100">
+
+                <ng-container *ngIf="isLoading; else dataLoaded">
+                    <div class="col-12 md:col-3" *ngFor="let s of [1,2,3,4]">
+                        <p-card [style]="{ width: '100%', height:'100%'}" class="skeleton-card">
+                            <ng-template pTemplate="header">
+                                <p-skeleton height="200px" width="100%" class="w-full border-round"></p-skeleton>
+                            </ng-template>
+                            <p-skeleton width="80%" class="mb-2"></p-skeleton>
+                            <p-skeleton width="60%" class="mb-2"></p-skeleton>
+                            <p-skeleton width="40%" class="mb-2"></p-skeleton>
+                        </p-card>
+                    </div>
+                </ng-container>
+
+                <!-- <ng-template #dataLoaded>
+                    <div class="col-12 md:col-3 p-3" *ngFor="let item of carList">
+                        <div class="luxury-car-card">
+                            <img [src]="item.image" alt="{{ item.name }}" class="car-image" />
+                            <div class="container">
+                                <div class="brand-badge">
+                                    {{ getBrandName(item.brandId) }} Cars
+                                </div>
+                                <h3 class="car-model">
+                                    {{ getModelName(item.modelId) }}
+                                </h3>
+
+                                <div class="card-footer flex justify-content-between align-items-center">
+                                    <div class="price" *ngFor="let price of item.rentalPricing">
+                                        <span class="price-amount">
+                                            ₹ {{ price.rentalCost }}<small>/Per Day </small>
+                                        </span>
+                                    </div>
+
+                                    <p-button icon="pi pi-arrow-right" styleClass="arrow-button"
+                                        (onClick)="View(item.carId)"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template> -->
+
+                <ng-template #dataLoaded>
+                    <div class="car-grid">
+                        <div class="luxury-car-card" *ngFor="let item of carList">
+                            <img [src]="item.image" alt="{{ item.name }}" class="car-image" />
+                            <div class="card-content">
+                                <div class="brand-badge">
+                                    {{ getBrandName(item.brandId) }} Cars
+                                </div>
+                                <h3 class="car-model">
+                                    {{ getModelName(item.modelId) }}
+                                </h3>
+
+                                <div class="card-footer">
+                                    <div class="price" *ngFor="let price of item.rentalPricing">
+                                        <span class="price-amount">
+                                            ₹ {{ price.rentalCost }}<small>/Per Day</small>
+                                        </span>
+                                    </div>
+
+                                    <p-button icon="pi pi-arrow-right" styleClass="arrow-button"
+                                        (onClick)="View(item.carId)"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </ng-template>
+</p-splitter>

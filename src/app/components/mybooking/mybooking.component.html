@@ -1,0 +1,70 @@
+<div class="split-panel flex align-items-start" style="overflow-y: auto;">
+    <div class="grid p-3">
+        <div class="col-12 md:col-4" *ngFor="let item of BookingList" style="overflow-x: hidden;">
+            <p-card styleClass="booking-card">
+                <ng-template pTemplate="header">
+                    <img [src]="item.carImage" [alt]="item.name" class=" booking-img w-full" />
+                </ng-template>
+
+                <ng-template pTemplate="content">
+                    <div class="p-2 flex flex-column justify-between gap-4" style="min-height: 320px;">
+
+                        <h3 class="text-2xl font-bold text-secondary m-0">
+                            {{ getBrandName(item.brandId) }} - {{ getModelName(item.modelId) }}
+                        </h3>
+
+                        <div class="flex flex-column gap-2 text-sm text-gray-700 mt-1">
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-600">Booking Reason :</span>
+                                <span>{{ item.bookingReason }}</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-600">Destination :</span>
+                                <span>{{ item.destination }}</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-600">Start Date:</span>
+                                <span>{{ item.startDate | date: 'mediumDate' }}</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-600">End Date:</span>
+                                <span>{{ item.endDate | date: 'mediumDate' }}</span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="font-medium text-gray-600">Price:</span>
+                                <span class="text-green-600 font-semibold">₹ {{ item.price }}</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 mt-2 border-top-1 surface-border flex justify-between align-items-center flex-wrap gap-3">
+
+                            <!-- Status Tag -->
+                            <div class="flex align-items-center gap-2">
+                                <span class="font-medium text-gray-600">Status:</span>
+                                <p-tag [value]="item.isComplete ? 'Completed' : 'Pending'"
+                                    [severity]="item.isComplete ? 'success' : 'warning'"
+                                    styleClass="border-round font-semibold text-xs"></p-tag>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex gap-2">
+                                <p-button *ngIf="!item.isComplete" label="Update" icon="pi pi-pencil"
+                                    styleClass="p-button-sm p-button-success p-button-rounded shadow-1 custom-button-dark"
+                                    (onClick)="Update(item.bookingId, item.carId)"></p-button>
+
+                                <p-button *ngIf="!item.isComplete" label="Delete" icon="pi pi-trash"
+                                    styleClass="p-button-sm p-button-danger p-button-rounded shadow-1 custom-default"
+                                    (onClick)="Delete(item.bookingId)"></p-button>
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>
